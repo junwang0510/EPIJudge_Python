@@ -2,9 +2,14 @@ from test_framework import generic_test
 
 
 def count_bits(x: int) -> int:
-    # TODO - you fill in here.
-    return 0
-
+    '''
+    x & x - 1 removes the least significant set bit
+    '''
+    count = 0
+    while x:
+        x &= x - 1
+        count += 1
+    return count
 
 if __name__ == '__main__':
     exit(

@@ -2,9 +2,13 @@ from test_framework import generic_test
 
 
 def closest_int_same_bit_count(x: int) -> int:
-    # TODO - you fill in here.
-    return 0
-
+    '''
+    Check the adjacent bits from right to left. If they are unequal, swap them.
+    '''
+    for i in range(63):
+        if (x >> i) & 1 != (x >> (i + 1)) & 1:
+            mask = (1 << i) | (1 << (i + 1))
+            return x ^ mask
 
 if __name__ == '__main__':
     exit(

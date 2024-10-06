@@ -2,9 +2,15 @@ from test_framework import generic_test
 
 
 def reverse_bits(x: int) -> int:
-    # TODO - you fill in here.
-    return 0
-
+    '''
+    shift and get the least significant bit with (x & 1)
+    '''
+    res = 0
+    for _ in range(64):
+        res <<= 1
+        res += x & 1
+        x >>= 1
+    return res
 
 if __name__ == '__main__':
     exit(

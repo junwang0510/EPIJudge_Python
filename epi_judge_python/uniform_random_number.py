@@ -12,8 +12,18 @@ def zero_one_random():
 
 
 def uniform_random(lower_bound: int, upper_bound: int) -> int:
-    # TODO - you fill in here.
-    return 0
+    number_of_outcomes = upper_bound - lower_bound + 1
+    while True:
+        res = 0
+        i = 0
+        # randomly generate a value between [0, 2^(i-1)]
+        while (1 << i) < number_of_outcomes:
+            res = (res << 1) | zero_one_random()
+            i += 1
+        # if the result >= number_of_outcomes, we redo the random process
+        if res < number_of_outcomes:
+            break
+    return res + lower_bound
 
 
 @enable_executor_hook
